@@ -10,9 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface TMDBApi {
-    @GET("/3/movie/top_rated?api_key=f471cbe42baf872c5fb54042a0b14cf7") //top_rated vs popular
+    @GET("/3/movie/top_rated?") //top_rated vs popular
     suspend fun loadMoviesList(): popular
-    @GET("/3/search/movie?api_key=f471cbe42baf872c5fb54042a0b14cf7&language=en-US&query=movie&page=1&include_adult=false&primary_release_year=2022")
+    @GET("/3/search/movie?&language=en-US&query=movie&page=1&include_adult=false&primary_release_year=2022")
     suspend fun loadSomeMovies(): popular
     //@GET("/3/movie/{id}")   getDetails(@Path("id") id : String, @Query("api_key") api_key: String)
 }
