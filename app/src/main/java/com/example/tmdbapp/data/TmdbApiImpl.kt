@@ -1,46 +1,50 @@
 package com.example.tmdbapp.repositories
 
-import com.example.tmdbapp.remoteSource.Movie
-import com.example.tmdbapp.remoteSource.popular
+import com.example.buttomnavigation.BuildConfig
+import com.example.tmdbapp.data.Movie
+import com.example.tmdbapp.data.ApiMoviesList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
+//import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
+const val API_KEY = BuildConfig.API_KEY
+const val BASE_URL = BuildConfig.BASE_URL
 
-interface TMDBApi {
-    @GET("/3/movie/top_rated?") //top_rated vs popular
-    suspend fun loadMoviesList(): popular
+interface TmdbApi {
     @GET("/3/search/movie?&language=en-US&query=movie&page=1&include_adult=false&primary_release_year=2022")
-    suspend fun loadSomeMovies(): popular
+    suspend fun loadMovies(@Query("api_key") api_key: String): ApiMoviesList
+    @GET("/3/movie/top_rated") //top_rated vs popular
+    suspend fun loadTopMovies(@Query("api_key") api_key: String): ApiMoviesList
     //@GET("/3/movie/{id}")   getDetails(@Path("id") id : String, @Query("api_key") api_key: String)
 }
-object TMDBApiImpl {
+object TmdbApiImpl {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.themoviedb.org")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .client(OkHttpClient.Builder().build())
+//        .client(OkHttpClient.Builder().build())
         .build()
-    private val TMDBApiService = retrofit.create(TMDBApi::class.java)
+    private val TmdbApiService = retrofit.create(TmdbApi::class.java)
 
-    suspend fun loadMoviesList() : List<Movie> {
+    suspend fun loadMovies() : List<Movie> {
         return withContext(Dispatchers.IO) {
-            TMDBApiService.loadMoviesList()
+            TmdbApiService.loadMovies(API_KEY)
                 .results
                 .map { result ->
                     Movie(
                         result.id,
-                        result.title, // original_title  in exotic langs & super long
+                        result.title,
                         result.release_date,
                         result.vote_average
                     )
                 }
         }
     }
-    suspend fun loadSomeMovies() : List<Movie> {
+    suspend fun loadTopMovies() : List<Movie> {
         return withContext(Dispatchers.IO) {
-            TMDBApiService.loadSomeMovies()
+            TmdbApiService.loadTopMovies(API_KEY)
                 .results
                 .map { result ->
                     Movie(
