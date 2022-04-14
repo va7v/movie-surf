@@ -24,7 +24,7 @@ object TmdbApiImpl {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    private val TmdbApiService = retrofit.create(TmdbApi::class.java)
+    private val TmdbApiService: TmdbApi by lazy { retrofit.create(TmdbApi::class.java) }
 
     suspend fun loadMovies() : List<Movie> {
         return withContext(Dispatchers.IO) {

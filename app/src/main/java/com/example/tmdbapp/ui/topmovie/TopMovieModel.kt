@@ -12,9 +12,20 @@ class TopMovieModel : ViewModel() {
     private val _items = MutableLiveData<List<Movie>>()
     val items: LiveData<List<Movie>> get() = _items
 
+    private val _status = MutableLiveData<String>()
+    val status: LiveData<String> = _status
+
     init {
+        getTopMovies()
+    }
+
+    private fun getTopMovies() {
         viewModelScope.launch {
-            _items.value = TmdbApiImpl.loadTopMovies() //
+            try {
+                _items.value = TmdbApiImpl.loadTopMovies()
+             } catch (e: Exception) {
+                _status.value = "Failure: ${e.message}"
+            }
         }
     }
 
