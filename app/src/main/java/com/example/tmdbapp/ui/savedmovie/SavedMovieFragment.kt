@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.buttomnavigation.databinding.FragmentSavedBinding
 
-class SavedFragment : Fragment() {
+class SavedMovieFragment : Fragment() {
 
     private lateinit var savedMovieModel: SavedMovieModel
     private var _binding: FragmentSavedBinding? = null

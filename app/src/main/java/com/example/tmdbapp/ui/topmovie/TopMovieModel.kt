@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tmdbapp.remoteSource.Movie
-import com.example.tmdbapp.repositories.TMDBApiImpl
+import com.example.tmdbapp.data.Movie
+import com.example.tmdbapp.repositories.TmdbApiImpl
 import kotlinx.coroutines.launch
 
 class TopMovieModel : ViewModel() {
@@ -14,7 +14,7 @@ class TopMovieModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            _items.value = TMDBApiImpl.loadMoviesList() //
+            _items.value = TmdbApiImpl.loadTopMovies() //
         }
     }
 

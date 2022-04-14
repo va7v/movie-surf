@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentTopBinding
 import com.example.tmdbapp.ui.MoviesAdapter
 
-class TopFragment : Fragment() {
+class TopMovieFragment : Fragment() {
     private var _binding: FragmentTopBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!

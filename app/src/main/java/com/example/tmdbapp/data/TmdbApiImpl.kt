@@ -5,7 +5,6 @@ import com.example.tmdbapp.data.Movie
 import com.example.tmdbapp.data.ApiMoviesList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-//import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -24,7 +23,6 @@ object TmdbApiImpl {
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-//        .client(OkHttpClient.Builder().build())
         .build()
     private val TmdbApiService = retrofit.create(TmdbApi::class.java)
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.databinding.LayoutItemBinding
-import com.example.tmdbapp.remoteSource.Movie
+import com.example.tmdbapp.data.Movie
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
     private val items = mutableListOf<Movie>() //moviesList
@@ -25,7 +25,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleTextView.text = items[position].title + "  (" +
                 items[position].vote_average.toString() + ")"
-        holder.binding.dateTextView.text = "(с) " + items[position].data
+        holder.binding.dateTextView.text = items[position].data
     }
     fun addItems(newItems: List<Movie>) {
         items.addAll(newItems)

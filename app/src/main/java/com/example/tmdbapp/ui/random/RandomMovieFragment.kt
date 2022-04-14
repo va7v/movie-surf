@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentRandomBinding
 import com.example.tmdbapp.ui.MoviesAdapter
 
-class RandomFragment : Fragment() {
+class RandomMovieFragment : Fragment() {
     private var _binding: FragmentRandomBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!

@@ -1,6 +1,6 @@
-package com.example.tmdbapp.remoteSource
+package com.example.tmdbapp.data
 
-data class popular(
+data class ApiMoviesList(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,
