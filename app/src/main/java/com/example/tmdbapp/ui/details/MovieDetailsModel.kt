@@ -1,13 +1,13 @@
-package com.example.tmdbapp.ui.savedmovie
+package com.example.tmdbapp.ui.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SavedMovieModel : ViewModel() {
+class MovieDetailsModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is saved movies Fragment"
+        value = "This is movie details Fragment"
     }
     val text: LiveData<String> = _text
 }

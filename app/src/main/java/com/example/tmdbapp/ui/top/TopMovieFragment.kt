@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.topmovie
+package com.example.tmdbapp.ui.top
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -53,7 +53,6 @@ class TopFragment : Fragment() {
 
     private lateinit var topMovieModel: TopMovieModel
     private var _binding: FragmentTopBinding? = null
-
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 

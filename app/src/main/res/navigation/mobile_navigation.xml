@@ -5,21 +5,31 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_random">
 
-    <fragment
-        android:id="@+id/navigation_random"
+    <fragment android:id="@+id/navigation_random"
         android:name="com.example.tmdbapp.ui.random.RandomMovieFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_random" />
+        android:label="@string/title_home">
+
+        <action android:id="@+id/action_navigation_random_to_navigation_details"
+            app:destination="@id/navigation_details"
+            app:popUpTo="@+id/navigation_random"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_top"
-        android:name="com.example.tmdbapp.ui.topmovie.TopMovieFragment"
+        android:name="com.example.tmdbapp.ui.top.TopMovieFragment"
         android:label="@string/title_top"
         tools:layout="@layout/fragment_top" />
 
     <fragment
         android:id="@+id/navigation_saved"
-        android:name="com.example.tmdbapp.ui.savedmovie.SavedMovieFragment"
+        android:name="com.example.tmdbapp.ui.saved.SavedMovieFragment"
         android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
+
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="com.example.tmdbapp.ui.details.MovieDetailsFragment"
+        android:label="@string/details"
+        tools:layout="@layout/fragment_details" />
+
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.savedmovie
+package com.example.tmdbapp.ui.saved
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,8 +15,6 @@ class SavedMovieFragment : Fragment() {
     private lateinit var savedMovieModel: SavedMovieModel
     private var _binding: FragmentSavedBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

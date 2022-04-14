@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.topmovie
+package com.example.tmdbapp.ui.top
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
