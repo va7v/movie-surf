@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.buttomnavigation.databinding.FragmentSavedBinding
 
-class MovieDetailsFragment : Fragment() {
+class MovieDetailsFragment(): Fragment() {
 
     private lateinit var movieDetailsModel: MovieDetailsModel
     private var _binding: FragmentSavedBinding? = null
@@ -28,6 +28,7 @@ class MovieDetailsFragment : Fragment() {
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // arguments.getString("id")
         val textView: TextView = binding.textNotifications
         movieDetailsModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

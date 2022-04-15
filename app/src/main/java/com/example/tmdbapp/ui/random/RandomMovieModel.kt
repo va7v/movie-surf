@@ -24,7 +24,7 @@ class RandomMovieModel : ViewModel() {
                 _items.value = TmdbApiImpl.loadMovies()
                 //_status.value = "Success: ${_items.value.size} retrieved"
             } catch (e: Exception) {
-                _status.value = "Failure: ${e.message}"
+                _status.value = "Ошибка сетевого запроса: ${e.message}"
             }
         }
     }

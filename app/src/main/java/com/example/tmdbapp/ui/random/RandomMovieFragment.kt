@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentRandomBinding
 import com.example.tmdbapp.ui.MoviesAdapter
+import com.example.tmdbapp.utils.isNetworkAvailable
 
 class RandomMovieFragment : Fragment() {
     private var _binding: FragmentRandomBinding? = null
@@ -30,16 +31,19 @@ class RandomMovieFragment : Fragment() {
         recyclerView.adapter = itemAdapter
         // app:layoutManager @xml instead of recyclerView.layoutManager = LinearLayoutManager(this)
 
-        randomViewModel.items.observe(viewLifecycleOwner, Observer {
-            itemAdapter.addItems(it)
-        })
+        if (isNetworkAvailable(requireContext())) {
+            randomViewModel.items.observe(viewLifecycleOwner, Observer {
+                itemAdapter.addItems(it)
+            })
 
-        randomViewModel.status.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), it , Toast.LENGTH_LONG).show()
-        })
-
+            randomViewModel.status.observe(viewLifecycleOwner, Observer {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+            })
+        } else
+            Toast.makeText(requireContext(), "Network is off!", Toast.LENGTH_LONG).show()
         return root
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

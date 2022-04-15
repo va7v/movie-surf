@@ -2,6 +2,7 @@ package com.example.tmdbapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
@@ -31,11 +32,14 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleTextView.text = items[position].title + "  (" +
                 (items[position].vote_average).toString() + ")"
-        holder.binding.dateTextView.text = items[position].data
-        Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path).into(holder.binding.imageView)
+        holder.binding.dateTextView.text = items[position].data + " id: " + items[position].id
+        Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
+            .into(holder.binding.imageView)
 
+        var bundle = bundleOf("id" to items[position].id)
         holder.itemView.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_navigation_random_to_navigation_details)
+            Navigation.createNavigateOnClickListener(
+                R.id.action_navigation_random_to_navigation_details, bundle)
         )
     }
 
@@ -43,9 +47,6 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
         items.addAll(newItems)
         notifyDataSetChanged()
     }
-
-
-
 
     companion object {
         const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentTopBinding
 import com.example.tmdbapp.ui.MoviesAdapter
+import com.example.tmdbapp.utils.isNetworkAvailable
 
 class TopMovieFragment : Fragment() {
     private var _binding: FragmentTopBinding? = null
@@ -30,14 +31,15 @@ class TopMovieFragment : Fragment() {
         recyclerView.adapter = itemAdapter
         // xml instead of recyclerView.layoutManager = LinearLayoutManager(this)
 
-        topViewModel.items.observe(viewLifecycleOwner, Observer {
-            itemAdapter.addItems(it)
-        })
-
-        topViewModel.status.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), it , Toast.LENGTH_LONG).show()
-        })
-
+        if (isNetworkAvailable(requireContext())) {
+            topViewModel.items.observe(viewLifecycleOwner, Observer {
+                itemAdapter.addItems(it)
+            })
+            topViewModel.status.observe(viewLifecycleOwner, Observer {
+                Toast.makeText(requireContext(), it , Toast.LENGTH_LONG).show()
+            })
+        } else
+            Toast.makeText(requireContext(), "Network is off!", Toast.LENGTH_LONG).show()
         return root
     }
     override fun onDestroyView() {

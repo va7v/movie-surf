@@ -7,7 +7,8 @@
 
     <fragment android:id="@+id/navigation_random"
         android:name="com.example.tmdbapp.ui.random.RandomMovieFragment"
-        android:label="@string/title_home">
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_random" >
 
         <action android:id="@+id/action_navigation_random_to_navigation_details"
             app:destination="@id/navigation_details"
