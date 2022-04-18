@@ -10,3 +10,5 @@ fun isNetworkAvailable(context: Context): Boolean {
     activeNetworkInfo = cm.activeNetworkInfo
     return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
 }
+
+

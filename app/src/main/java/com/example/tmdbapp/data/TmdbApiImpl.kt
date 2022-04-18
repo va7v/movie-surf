@@ -13,7 +13,7 @@ const val API_KEY = BuildConfig.API_KEY
 const val BASE_URL = BuildConfig.BASE_URL
 
 interface TmdbApi {
-    @GET("/3/discover/movie?with_genres=18&primary_release_year=2022")
+    @GET("/3/discover/movie?primary_release_year=2022") //with_genres=18&
     // /3/search/movie?&language=en-US&query=movie&page=1&primary_release_year=2022
     suspend fun loadMovies(@Query("api_key") api_key: String): ApiMoviesList
     @GET("/3/discover/movie?sort_by=vote_average.desc") //top_rated > popular
@@ -21,6 +21,9 @@ interface TmdbApi {
     @GET("/3/movie/{id}")
     suspend fun getDetails(@Path("id") id : String?, @Query("api_key") api_key: String)
             : ApiMovieDetails
+    @GET("/3/movie/{id}/credits")
+    suspend fun getActors(@Path("id") id : String?, @Query("api_key") api_key: String)
+            : ApiMovieCredits
 }
 object TmdbApiImpl {
     private val retrofit = Retrofit.Builder()
@@ -29,6 +32,20 @@ object TmdbApiImpl {
         .build()
     private val TmdbApiService: TmdbApi by lazy { retrofit.create(TmdbApi::class.java) }
 
+    suspend fun getActors(id : String?, api_key: String) : List<Actor> {
+        return withContext(Dispatchers.IO) {
+            TmdbApiService.getActors(id, api_key)
+                .cast
+                .filter { it.character != null }
+                .map { result ->
+                    Actor(
+                        result.id,
+                        result.name,
+                        result.character
+                    )
+                }
+        }
+    }
     suspend fun getDetails(id : String?, api_key: String) : List<Gentre> {//
         return withContext(Dispatchers.IO) {
             TmdbApiService.getDetails(id, api_key)

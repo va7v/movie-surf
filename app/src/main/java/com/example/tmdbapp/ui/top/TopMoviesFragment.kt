@@ -28,7 +28,7 @@ class TopMoviesFragment : Fragment() {
         val recyclerView = binding.recyclerView
 
         recyclerView.adapter = itemAdapter
-        // xml instead of recyclerView.layoutManager = LinearLayoutManager(this)
+        // in layout instead of recyclerView.layoutManager = LinearLayoutManager(this)
 
         if (isNetworkAvailable(requireContext())) {
             topViewModel.items.observe(viewLifecycleOwner, Observer {

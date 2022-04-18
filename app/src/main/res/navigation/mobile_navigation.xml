@@ -53,6 +53,15 @@
             android:name="poster_path"
             app:argType="string"
             android:defaultValue="" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="overview"
+            app:argType="string"
+            android:defaultValue="" />
+
     </fragment>
 
 </navigation>
