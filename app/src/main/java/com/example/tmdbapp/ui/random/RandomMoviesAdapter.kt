@@ -30,13 +30,15 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.titleTextView.text = items[position].title + "  (" +
-                (items[position].vote_average).toString() + ")"
-        holder.binding.dateTextView.text = items[position].data + " id: " + items[position].id
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
             .into(holder.binding.imageView)
-
-        var bundle = bundleOf("movie_id" to items[position].id)
+        holder.binding.titleTextView.text = items[position].title
+        holder.binding.dateTextView.text = "(" +
+            (items[position].vote_average).toString() + ")"
+        // " id: " + items[position].id
+        var bundle = bundleOf("movie_id" to items[position].id,
+        "title" to items[position].title, "rate" to items[position].vote_average.toString(),
+        "poster_path" to items[position].poster_path)
         holder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
                 R.id.action_navigation_random_to_navigation_details, bundle)

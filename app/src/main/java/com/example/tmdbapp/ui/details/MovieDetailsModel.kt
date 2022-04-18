@@ -16,16 +16,10 @@ class MovieDetailsModel : ViewModel() {
     private val _status = MutableLiveData<String>()
     val status: LiveData<String> = _status
 
-///   val gentre: LiveData<Sring> =
-
-/*    init {
-        getMovie(m_id)//"675353"
-    }*/
-
     fun getMovie(m_id: String?) {
         viewModelScope.launch {
             try {
-                _text.value = "Gentre is:  " + TmdbApiImpl.getDetails(m_id, API_KEY).get(0).name
+                _text.value = TmdbApiImpl.getDetails(m_id, API_KEY).get(0).name
             } catch (e: Exception) {
                 _text.value = "Ошибка сетевого запроса: ${e.message}"
             }

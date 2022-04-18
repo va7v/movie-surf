@@ -32,7 +32,8 @@ class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.titleTextView.text = items[position].title + "  (" +
                 (items[position].vote_average).toString() + ")"
-        holder.binding.dateTextView.text = items[position].data + " id: " + items[position].id
+        holder.binding.dateTextView.text = items[position].data?.substring(0,4)
+        //" id: " + items[position].id
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
             .into(holder.binding.imageView)
 

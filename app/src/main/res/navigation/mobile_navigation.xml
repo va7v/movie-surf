@@ -41,6 +41,18 @@
             android:name="movie_id"
             app:argType="string"
             android:defaultValue="" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="rate"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="poster_path"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 
 </navigation>

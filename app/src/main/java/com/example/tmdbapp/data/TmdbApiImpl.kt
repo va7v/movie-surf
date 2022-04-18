@@ -29,7 +29,7 @@ object TmdbApiImpl {
         .build()
     private val TmdbApiService: TmdbApi by lazy { retrofit.create(TmdbApi::class.java) }
 
-    suspend fun getDetails(id : String?, api_key: String) : List<Gentre> {
+    suspend fun getDetails(id : String?, api_key: String) : List<Gentre> {//
         return withContext(Dispatchers.IO) {
             TmdbApiService.getDetails(id, api_key)
                 .genres
@@ -38,14 +38,6 @@ object TmdbApiImpl {
                         result.id,
                         result.name
                     )
-/*
-MovieDetails(
-                        result.original_title,
-                        result.overview,
-                        result.poster_path,
-                        result.release_date,
-                        result.vote_average
-                    )*/
                 }
         }
     }
@@ -59,7 +51,8 @@ MovieDetails(
                         result.release_date,
                         result.title,
                         result.poster_path,
-                        result.vote_average
+                        result.vote_average,
+                        result.overview
                     )
                 }
         }
@@ -74,7 +67,8 @@ MovieDetails(
                         result.release_date,
                         result.title,
                         result.poster_path,
-                        result.vote_average
+                        result.vote_average,
+                        result.overview
                     )
                 }
         }
