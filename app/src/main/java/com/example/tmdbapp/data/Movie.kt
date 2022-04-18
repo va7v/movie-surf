@@ -1,7 +1,7 @@
 package com.example.tmdbapp.data
 
 data class Movie(
-    val id: Int?,
+    val id: String?,
     val data: String?,
     val title: String?,
     val poster_path: String?,

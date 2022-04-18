@@ -10,6 +10,6 @@ data class ApiMovieDetails(
 )
 
 data class genres(
-    val id: Int,
+    val id: String,
     val name: String
 )

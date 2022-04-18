@@ -19,7 +19,7 @@ interface TmdbApi {
     @GET("/3/discover/movie?sort_by=vote_average.desc") //top_rated > popular
     suspend fun loadTopMovies(@Query("api_key") api_key: String): ApiMoviesList
     @GET("/3/movie/{id}")
-    suspend fun getDetails(@Path("id") id : String, @Query("api_key") api_key: String)
+    suspend fun getDetails(@Path("id") id : String?, @Query("api_key") api_key: String)
             : ApiMovieDetails
 }
 object TmdbApiImpl {
@@ -29,9 +29,9 @@ object TmdbApiImpl {
         .build()
     private val TmdbApiService: TmdbApi by lazy { retrofit.create(TmdbApi::class.java) }
 
-    suspend fun getDetails() : List<Gentre> {
+    suspend fun getDetails(id : String?, api_key: String) : List<Gentre> {
         return withContext(Dispatchers.IO) {
-            TmdbApiService.getDetails(id="675353", API_KEY)
+            TmdbApiService.getDetails(id, api_key)
                 .genres
                 .map { result ->
                     Gentre(

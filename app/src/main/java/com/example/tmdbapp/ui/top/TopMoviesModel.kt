@@ -8,7 +8,7 @@ import com.example.tmdbapp.data.Movie
 import com.example.tmdbapp.repositories.TmdbApiImpl
 import kotlinx.coroutines.launch
 
-class TopMovieModel : ViewModel() {
+class TopMoviesModel : ViewModel() {
     private val _items = MutableLiveData<List<Movie>>()
     val items: LiveData<List<Movie>> get() = _items
 

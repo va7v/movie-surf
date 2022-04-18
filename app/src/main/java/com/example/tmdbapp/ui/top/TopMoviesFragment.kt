@@ -9,16 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentTopBinding
-import com.example.tmdbapp.ui.MoviesAdapter
 import com.example.tmdbapp.utils.isNetworkAvailable
 
-class TopMovieFragment : Fragment() {
+class TopMoviesFragment : Fragment() {
     private var _binding: FragmentTopBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-    private val topViewModel by viewModels<TopMovieModel>()
-    private val itemAdapter = MoviesAdapter()
+    private val topViewModel by viewModels<TopMoviesModel>()
+    private val itemAdapter = TopMoviesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

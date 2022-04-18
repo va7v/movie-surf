@@ -4,19 +4,33 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tmdbapp.data.Movie
+import com.example.tmdbapp.repositories.API_KEY
 import com.example.tmdbapp.repositories.TmdbApiImpl
 import kotlinx.coroutines.launch
 
 class MovieDetailsModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        //value = "This is movie details Fragment"
+    private val _text = MutableLiveData<String>()
+    val text: LiveData<String> get() = _text
+
+    private val _status = MutableLiveData<String>()
+    val status: LiveData<String> = _status
+
+///   val gentre: LiveData<Sring> =
+
+/*    init {
+        getMovie(m_id)//"675353"
+    }*/
+
+    fun getMovie(m_id: String?) {
         viewModelScope.launch {
-            value = "Gentre is:  " + TmdbApiImpl.getDetails().get(0).name
+            try {
+                _text.value = "Gentre is:  " + TmdbApiImpl.getDetails(m_id, API_KEY).get(0).name
+            } catch (e: Exception) {
+                _text.value = "Ошибка сетевого запроса: ${e.message}"
+            }
         }
     }
-    val text: LiveData<String> = _text
 
 }
 

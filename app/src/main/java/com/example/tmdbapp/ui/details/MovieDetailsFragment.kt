@@ -22,15 +22,13 @@ class MovieDetailsFragment(): Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        movieDetailsModel =
-            ViewModelProvider(this).get(MovieDetailsModel::class.java)
+        movieDetailsModel = ViewModelProvider(this).get(MovieDetailsModel::class.java)
 
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        // arguments.getString("id")
         val textView: TextView = binding.textNotifications
-        movieDetailsModel.text.observe(viewLifecycleOwner, Observer {
+        movieDetailsModel.getMovie(arguments?.getString("movie_id"))
+        movieDetailsModel.text.observe(getViewLifecycleOwner(), Observer {
             textView.text = it
         })
         return root

@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui
+package com.example.tmdbapp.ui.top
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.example.buttomnavigation.databinding.LayoutItemBinding
 import com.example.tmdbapp.data.Movie
 import com.squareup.picasso.Picasso
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Movie>()
 
@@ -36,10 +36,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
             .into(holder.binding.imageView)
 
-        var bundle = bundleOf("id" to items[position].id)
+        var bundle = bundleOf("movie_id" to items[position].id)
         holder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
-                R.id.action_navigation_random_to_navigation_details, bundle)
+                R.id.action_navigation_top_to_navigation_details, bundle)
         )
     }
 

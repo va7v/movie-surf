@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentRandomBinding
-import com.example.tmdbapp.ui.MoviesAdapter
 import com.example.tmdbapp.utils.isNetworkAvailable
 
 class RandomMovieFragment : Fragment() {
@@ -18,7 +17,7 @@ class RandomMovieFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val randomViewModel by viewModels<RandomMovieModel>()
-    private val itemAdapter = MoviesAdapter()
+    private val itemAdapter = RandomMoviesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
