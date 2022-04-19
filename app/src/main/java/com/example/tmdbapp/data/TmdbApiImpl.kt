@@ -41,7 +41,8 @@ object TmdbApiImpl {
                     Actor(
                         result.id,
                         result.name,
-                        result.character
+                        result.character,
+                        result.profile_path
                     )
                 }
         }

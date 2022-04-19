@@ -8,5 +8,6 @@ data class ApiMovieCredits(
 data class casts(
     val id: String,
     val name: String,
-    val character: String
+    val character: String,
+    val profile_path: String
 )
