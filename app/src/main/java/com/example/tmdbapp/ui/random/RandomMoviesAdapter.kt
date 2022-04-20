@@ -33,7 +33,7 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
             .into(holder.binding.imageView)
         holder.binding.titleTextView.text = items[position].title
-        holder.binding.dateTextView.text = "(" + (items[position].vote_average).toString() + ")"
+        holder.binding.dateTextView.text = "Рейтинг: " + (items[position].vote_average).toString()
 
         val bundle = bundleOf("movie_id" to items[position].id,
         "title" to items[position].title, "rate" to items[position].vote_average.toString(),

@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.buttomnavigation.R
 import com.example.buttomnavigation.databinding.FragmentDetailsBinding
 import com.example.buttomnavigation.databinding.ItemActorBinding
 import com.squareup.picasso.Picasso
@@ -27,24 +28,23 @@ class MovieDetailsFragment(): Fragment() {
 
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textViewDetails: TextView = binding.textNotifications
-        // val textViewActor: TextView = binding.textActor
         val imageView: ImageView = binding.imageView
         Picasso.get().load(BASE_IMAGE_URL +
-             arguments?.getString("poster_path")).into(imageView)
-
+                arguments?.getString("poster_path")).into(imageView)
+        val textViewDetails: TextView = binding.textNotifications
         movieDetailsModel.getMovieGentre(arguments?.getString("movie_id"))
         movieDetailsModel.text.observe(getViewLifecycleOwner(), Observer {
             var gentre = it
-            textViewDetails.text = arguments?.getString("title")+"  /  Дата выхода: " +
-                    arguments?.getString("date")+"\nРейтинг: "+
-                    arguments?.getString("rate") + "\nЖанр: " + gentre +
-                    "\nОписание:  " + arguments?.getString("overview")
+            val MovieDate = arguments?.getString("date")
+            val MovieOverview = arguments?.getString("overview")
+            val MovieRate = arguments?.getString("rate")
+            textViewDetails.text = arguments?.getString("title") +
+                    "  /  Дата выхода: " + MovieDate +
+                    "\nРейтинг: " + MovieRate +
+                    "\nЖанр: " + gentre +
+                    ". Описание:  " + MovieOverview
         })
-
         movieDetailsModel.getMovieActors(arguments?.getString("movie_id"))
-
         movieDetailsModel.items.observe(getViewLifecycleOwner(), Observer {
 /*            val size = it.size - 1
             var str = "В ролях:\n${it.get(0).name}"
@@ -58,7 +58,10 @@ class MovieDetailsFragment(): Fragment() {
                 val character = itemBinding.character
                 character.text = "Роль: " + it[i].character
                 val imageViewCast = itemBinding.imageViewCast
-                Picasso.get().load(BASE_IMAGE_URL + it[i].profile_path).into(imageViewCast)
+                Picasso.get().load(BASE_IMAGE_URL + it[i].profile_path)
+                    .placeholder(R.drawable.placeholder_150)
+                    .error(R.drawable.placeholder_150)
+                    .into(imageViewCast)
                 linLayout.addView(itemBinding.root)
             }
         })

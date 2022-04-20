@@ -53,7 +53,6 @@ object TmdbApiImpl {
                 .genres
                 .map { result ->
                     Gentre(
-                        result.id,
                         result.name
                     )
                 }

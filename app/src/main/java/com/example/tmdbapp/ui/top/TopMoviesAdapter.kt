@@ -32,13 +32,18 @@ class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
             .into(holder.binding.imageView)
-        holder.binding.titleTextView.text = items[position].title + "  (" +
-                (items[position].vote_average).toString() + ")"
-        holder.binding.dateTextView.text = items[position].date?.substring(0,4)
-
+        holder.binding.titleTextView.text = items[position].title + "\n\nРейтинг: " +
+                (items[position].vote_average).toString()
+        val year: String?
+        if (items[position].date != "" ) {
+            holder.binding.dateTextView.text = items[position].date?.substring(0, 4)
+            year = items[position].date
+        } else { year = "" }
         val bundle = bundleOf("movie_id" to items[position].id,
-            "title" to items[position].title, "rate" to items[position].vote_average.toString(),
-            "poster_path" to items[position].poster_path, "date" to items[position].date,
+            "title" to items[position].title,
+            "rate" to items[position].vote_average.toString(),
+            "poster_path" to items[position].poster_path,
+            "date" to year,
             "overview" to items[position].overview)
 
         holder.itemView.setOnClickListener(
