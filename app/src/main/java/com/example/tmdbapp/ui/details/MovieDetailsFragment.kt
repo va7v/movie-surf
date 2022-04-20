@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.buttomnavigation.databinding.FragmentDetailsBinding
+import com.example.buttomnavigation.databinding.ItemActorBinding
 import com.squareup.picasso.Picasso
 
 class MovieDetailsFragment(): Fragment() {
@@ -46,28 +47,25 @@ class MovieDetailsFragment(): Fragment() {
 
         movieDetailsModel.items.observe(getViewLifecycleOwner(), Observer {
 /*            val size = it.size - 1
-            var str = "Роли играли:\n${it.get(0).name}"
+            var str = "В ролях:\n${it.get(0).name}"
             for (n in 1 .. size) { str = str + ", " + it.get(n).name}
             textViewActor.text = str*/
-            val linLayout: LinearLayout = binding.linLayout
+            val linLayout = binding.linLayout
             for (i in 0 until it.size) {
-                val item = LayoutInflater.from(linLayout.context).inflate(com.example.buttomnavigation.R.layout.item, null)
-                val tvName = item.findViewById<View>(com.example.buttomnavigation.R.id.tv_name) as TextView
+                val itemBinding = ItemActorBinding.inflate(LayoutInflater.from(requireContext()))
+                val tvName = itemBinding.tvName
                 tvName.text = it[i].name
-                val cha = item.findViewById<View>(com.example.buttomnavigation.R.id.cha) as TextView
-                cha.text = "As: " + it[i].character
-                val imageViewCast = item.findViewById<View>(com.example.buttomnavigation.R.id.image_view_cast) as ImageView
+                val character = itemBinding.character
+                character.text = "Роль: " + it[i].character
+                val imageViewCast = itemBinding.imageViewCast
                 Picasso.get().load(BASE_IMAGE_URL + it[i].profile_path).into(imageViewCast)
-
-                linLayout.addView(item)
+                linLayout.addView(itemBinding.root)
             }
-
         })
 
         movieDetailsModel.status.observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         })
-
         return root
     }
 

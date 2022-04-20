@@ -28,7 +28,7 @@ class RandomMovieFragment : Fragment() {
         val recyclerView = binding.recyclerView
 
         recyclerView.adapter = itemAdapter
-        // app:layoutManager in layout instead of recyclerView.layoutManager = LinearLayoutManager(this)
+        // app:layoutManager in layout vs recyclerView.layoutManager = LinearLayoutManager(this)
 
         if (isNetworkAvailable(requireContext())) {
             randomViewModel.items.observe(viewLifecycleOwner, Observer {
