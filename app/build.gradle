@@ -77,8 +77,9 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    val paging_version = "3.1.1"
-    implementation("androidx.paging:paging-runtime:$paging_version")
+//    val paging_version = "3.1.1"
+//    implementation("androidx.paging:paging-runtime:$paging_version")
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
     // alternatively - without Android dependencies for tests
     //testImplementation("androidx.paging:paging-common:$paging_version")
 
