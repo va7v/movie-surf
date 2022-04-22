@@ -83,8 +83,5 @@ dependencies {
     // alternatively - without Android dependencies for tests
     //testImplementation("androidx.paging:paging-common:$paging_version")
 
-    // optional - Guava ListenableFuture support
-    //implementation("androidx.paging:paging-guava:$paging_version")
-    // optional - Jetpack Compose integration
-    //implementation("androidx.paging:paging-compose:1.0.0-alpha14")
+    //implementation "androidx.swiperefreshlayot:swiperefreshlayot:1.1.0"
 }

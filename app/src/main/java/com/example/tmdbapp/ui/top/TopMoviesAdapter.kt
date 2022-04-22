@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
 import com.example.buttomnavigation.databinding.LayoutItemBinding
-import com.example.tmdbapp.data.Movie
+import com.example.tmdbapp.data.model.Movie
 import com.squareup.picasso.Picasso
 
 class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
@@ -35,9 +35,9 @@ class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
         holder.binding.titleTextView.text = items[position].title + "\n\nРейтинг: " +
                 (items[position].vote_average).toString()
         val year: String?
-        if (items[position].date != "" ) {
-            holder.binding.dateTextView.text = items[position].date?.substring(0, 4)
-            year = items[position].date
+        if (items[position].release_date != "" ) {
+            holder.binding.dateTextView.text = items[position].release_date?.substring(0, 4)
+            year = items[position].release_date
         } else { year = "" }
         val bundle = bundleOf("movie_id" to items[position].id,
             "title" to items[position].title,

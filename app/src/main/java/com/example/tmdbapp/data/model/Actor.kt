@@ -1,4 +1,4 @@
-package com.example.tmdbapp.data
+package com.example.tmdbapp.data.model
 
 data class Actor(
     val id: String?,

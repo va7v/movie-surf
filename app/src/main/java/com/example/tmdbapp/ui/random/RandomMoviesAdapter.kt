@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
 import com.example.buttomnavigation.databinding.LayoutItemBinding
-import com.example.tmdbapp.data.Movie
+import com.example.tmdbapp.data.model.Movie
 import com.squareup.picasso.Picasso
 
 class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>() {
@@ -37,7 +37,7 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
 
         val bundle = bundleOf("movie_id" to items[position].id,
         "title" to items[position].title, "rate" to items[position].vote_average.toString(),
-        "poster_path" to items[position].poster_path, "date" to items[position].date,
+        "poster_path" to items[position].poster_path, "date" to items[position].release_date,
         "overview" to items[position].overview)
 
         holder.itemView.setOnClickListener(
