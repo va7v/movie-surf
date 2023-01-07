@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:contentDescription="user_photo"
-        tools:src="@drawable/ic_user_avatar"
+        tools:src="@drawable/placeholder150"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginStart="16dp"
         android:lines="1"
         android:ellipsize="end"

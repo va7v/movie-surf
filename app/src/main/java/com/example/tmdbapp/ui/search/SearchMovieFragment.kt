@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.saved
+package com.example.tmdbapp.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.buttomnavigation.databinding.FragmentSavedBinding
 
-class SavedMovieFragment : Fragment() {
+class SearchMovieFragment : Fragment() {
 
-    private lateinit var savedMovieModel: SavedMovieModel
+    private lateinit var searchMovieModel: SearchMovieModel
     private var _binding: FragmentSavedBinding? = null
 
     private val binding get() = _binding!!
@@ -22,14 +22,14 @@ class SavedMovieFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        savedMovieModel =
-            ViewModelProvider(this).get(SavedMovieModel::class.java)
+        searchMovieModel =
+            ViewModelProvider(this).get(SearchMovieModel::class.java)
 
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        savedMovieModel.text.observe(viewLifecycleOwner, Observer {
+        searchMovieModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

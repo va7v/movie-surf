@@ -1,4 +1,4 @@
-package com.example.tmdbapp.data.model
+package com.example.tmdbapp.data.network
 
 data class Movie(
     val id: String?,

@@ -1,6 +1,6 @@
 package com.example.tmdbapp.data
 
-import com.example.tmdbapp.data.model.Movie
+import com.example.tmdbapp.data.network.Movie
 
 data class ApiMoviesList(
     val page: Int,

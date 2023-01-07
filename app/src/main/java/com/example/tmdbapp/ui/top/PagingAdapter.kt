@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.databinding.ItemUserBinding
-import com.example.tmdbapp.data.model.Movie
+import com.example.tmdbapp.data.network.Movie
 
 class PagingAdapter: PagingDataAdapter<Movie, PagingAdapter.Holder>(UsersDiffCallback()) {
 

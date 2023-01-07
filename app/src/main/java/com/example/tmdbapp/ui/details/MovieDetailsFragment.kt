@@ -31,7 +31,8 @@ class MovieDetailsFragment(): Fragment() {
         val imageView: ImageView = binding.imageView
         Picasso.get().load(BASE_IMAGE_URL +
                 arguments?.getString("poster_path")).into(imageView)
-        val textViewDetails: TextView = binding.textNotifications
+        val textViewDetails: TextView = binding.textDetails1
+        val textViewDetails2: TextView = binding.textDetails2
         movieDetailsModel.getMovieGentre(arguments?.getString("movie_id"))
         movieDetailsModel.text.observe(getViewLifecycleOwner(), Observer {
             var gentre = it
@@ -39,17 +40,19 @@ class MovieDetailsFragment(): Fragment() {
             val MovieOverview = arguments?.getString("overview")
             val MovieRate = arguments?.getString("rate")
             textViewDetails.text = arguments?.getString("title") +
-                    "  /  Дата выхода: " + MovieDate +
-                    "\nРейтинг: " + MovieRate +
+                    "\n\nДата выхода: " + MovieDate +
                     "\nЖанр: " + gentre +
-                    ". Описание:  " + MovieOverview
+                    "\nРейтинг: " + MovieRate
+            textViewDetails2.text = "Сюжет:  " + MovieOverview + "\n\nСнимались:"
         })
         movieDetailsModel.getMovieActors(arguments?.getString("movie_id"))
         movieDetailsModel.items.observe(getViewLifecycleOwner(), Observer {
-/*            val size = it.size - 1
+            /*
+            val size = it.size - 1
             var str = "В ролях:\n${it.get(0).name}"
             for (n in 1 .. size) { str = str + ", " + it.get(n).name}
-            textViewActor.text = str*/
+            textViewActor.text = str
+            */
             val linLayout = binding.linLayout
             for (i in 0 until it.size) {
                 val itemBinding = ItemActorBinding.inflate(LayoutInflater.from(requireContext()))

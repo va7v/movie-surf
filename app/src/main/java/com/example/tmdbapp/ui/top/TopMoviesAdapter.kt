@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
 import com.example.buttomnavigation.databinding.LayoutItemBinding
-import com.example.tmdbapp.data.model.Movie
+import com.example.tmdbapp.data.network.Movie
 import com.squareup.picasso.Picasso
 
 class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {

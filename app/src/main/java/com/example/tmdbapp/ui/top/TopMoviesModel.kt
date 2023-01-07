@@ -2,11 +2,10 @@ package com.example.tmdbapp.ui.top
 
 import androidx.lifecycle.*
 import androidx.paging.PagingData
-import com.example.tmdbapp.data.model.Movie
+import com.example.tmdbapp.data.network.Movie
 import com.example.tmdbapp.repositories.TmdbApiImpl
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.Flow
 
 @ExperimentalCoroutinesApi

@@ -5,9 +5,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.buttomnavigation.BuildConfig
 import com.example.tmdbapp.data.*
-import com.example.tmdbapp.data.model.Actor
-import com.example.tmdbapp.data.model.Gentre
-import com.example.tmdbapp.data.model.Movie
+import com.example.tmdbapp.data.network.Actor
+import com.example.tmdbapp.data.network.Gentre
+import com.example.tmdbapp.data.network.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -16,8 +16,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.MutableStateFlow
 
 const val API_KEY = BuildConfig.API_KEY
 const val BASE_URL = BuildConfig.BASE_URL

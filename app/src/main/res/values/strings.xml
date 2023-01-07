@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">TMDB app</string>
-    <string name="title_home">Random (жанр, год)</string>
-    <string name="title_top">Top movies (рейтинг)</string>
-    <string name="title_saved">Saved</string>
-    <string name="details">movie details</string>
+    <string name="app_name">КиноСёрф</string>
+    <string name="title_home">Случайные</string>
+    <string name="title_top">Лучшие по рейтингу</string>
+    <string name="title_search">Поиск</string>
+    <string name="details">Описание фильма</string>
     <string name="cast">Снимались:</string>
-    <string name="movie_poster">Movie poster</string>
+    <string name="movie_poster">Постер</string>
 </resources>

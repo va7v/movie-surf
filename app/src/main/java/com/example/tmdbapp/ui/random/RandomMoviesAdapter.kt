@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
 import com.example.buttomnavigation.databinding.LayoutItemBinding
-import com.example.tmdbapp.data.model.Movie
+import com.example.tmdbapp.data.network.Movie
 import com.squareup.picasso.Picasso
 
 class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>() {
@@ -33,7 +33,9 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
             .into(holder.binding.imageView)
         holder.binding.titleTextView.text = items[position].title
-        holder.binding.dateTextView.text = "Рейтинг: " + (items[position].vote_average).toString()
+
+        holder.binding.dateTextView.text = "(${(items[position].release_date)})"+
+                "\n\nРейтинг:\n" + (items[position].vote_average)
 
         val bundle = bundleOf("movie_id" to items[position].id,
         "title" to items[position].title, "rate" to items[position].vote_average.toString(),

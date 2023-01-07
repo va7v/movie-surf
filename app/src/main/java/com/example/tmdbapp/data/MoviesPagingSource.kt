@@ -1,11 +1,8 @@
 package com.example.tmdbapp.data
 
-import androidx.paging.Pager
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.tmdbapp.data.model.Movie
-import com.example.tmdbapp.repositories.API_KEY
-import com.example.tmdbapp.repositories.TmdbApi
+import com.example.tmdbapp.data.network.Movie
 import java.lang.Exception
 
 
