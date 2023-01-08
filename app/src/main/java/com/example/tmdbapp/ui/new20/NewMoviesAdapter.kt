@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.random
+package com.example.tmdbapp.ui.new20
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.example.buttomnavigation.databinding.ItemNewMovieBinding
 import com.example.tmdbapp.data.network.Movie
 import com.squareup.picasso.Picasso
 
-class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>() {
+class NewMoviesAdapter : RecyclerView.Adapter<NewMoviesAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Movie>()
 
@@ -49,7 +49,7 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
 
         holder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
-                R.id.action_navigation_random_to_navigation_details, bundle)
+                R.id.action_navigation_new_to_navigation_details, bundle)
         )
     }
 

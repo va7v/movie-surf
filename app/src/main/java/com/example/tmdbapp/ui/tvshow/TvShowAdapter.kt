@@ -41,12 +41,12 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
 
         val bundle = bundleOf("movie_id" to items[position].id,
         "title" to items[position].title, "rate" to items[position].vote_average.toString(),
-        "poster_path" to items[position].poster_path, "date" to items[position].release_date,
+        "poster_path" to items[position].poster_path, "date" to items[position].release_date.toString(),
         "overview" to items[position].overview)
 
         holder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
-                R.id.action_navigation_random_to_navigation_details, bundle)
+                R.id.action_navigation_tvshow_to_navigation_tvshow_details, bundle)
         )
     }
 

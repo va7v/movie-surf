@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_random">
+    app:startDestination="@+id/navigation_new">
 
-    <fragment android:id="@+id/navigation_random"
-        android:name="com.example.tmdbapp.ui.random.RandomMovieFragment"
+    <fragment android:id="@+id/navigation_new"
+        android:name="com.example.tmdbapp.ui.new20.NewMovieFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_random" >
+        tools:layout="@layout/fragment_new" >
 
-        <action android:id="@+id/action_navigation_random_to_navigation_details"
+        <action android:id="@+id/action_navigation_new_to_navigation_details"
             app:destination="@id/navigation_details"
-            app:popUpTo="@+id/navigation_random"/>
+            app:popUpTo="@+id/navigation_new"/>
     </fragment>
 
     <fragment
@@ -27,33 +27,22 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_tvshow"
         android:name="com.example.tmdbapp.ui.tvshow.TvShowFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search">
+        tools:layout="@layout/fragment_new">
 
-    <action android:id="@+id/action_navigation_search_to_navigation_result"
-        app:destination="@id/navigation_result"
-        app:popUpTo="@+id/navigation_search"/>
-        />
-    </fragment>
+        <action
+            android:id="@+id/action_navigation_tvshow_to_navigation_tvshow_details"
+            app:destination="@id/navigation_tvshow_details" />
 
-    <fragment
-        android:id="@+id/navigation_result"
-        android:name="com.example.tmdbapp.ui.tvshow.TvShowFragment"
-        android:label="Результат поиска"
-        tools:layout="@layout/fragment_random" >
-        <argument
-            android:name="query"
-            android:defaultValue=""
-            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_details"
         android:name="com.example.tmdbapp.ui.details.MovieDetailsFragment"
         android:label="@string/details"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details_tvshow" >
         <argument
             android:name="movie_id"
             app:argType="string"
@@ -78,7 +67,36 @@
             android:name="overview"
             app:argType="string"
             android:defaultValue="" />
-
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_tvshow_details"
+        android:name="com.example.tmdbapp.ui.details.TvShowDetailsFragment"
+        android:label="@string/tvShowInfo"
+        tools:layout="@layout/fragment_details_tvshow" >
+        <argument
+            android:name="movie_id"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="rate"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="poster_path"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="date"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="overview"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 
 </navigation>

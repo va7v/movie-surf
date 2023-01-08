@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.random
+package com.example.tmdbapp.ui.new20
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import com.example.tmdbapp.data.network.Movie
 import com.example.tmdbapp.repositories.TmdbApiImpl
 import kotlinx.coroutines.launch
 
-class RandomMovieModel : ViewModel() {
+class NewMovieModel : ViewModel() {
     private val _items = MutableLiveData<List<Movie>>()
     val items: LiveData<List<Movie>> get() = _items
     private val _status = MutableLiveData<String>()

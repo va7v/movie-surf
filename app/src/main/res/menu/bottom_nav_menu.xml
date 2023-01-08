@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_random"
+        android:id="@+id/navigation_new"
         android:icon="@drawable/ic_baseline_fiber_new_24"
         android:title="@string/title_home" />
 
@@ -12,7 +12,7 @@
         android:title="@string/title_top" />
 
     <item
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_tvshow"
         android:icon="@drawable/ic_baseline_live_tv_24"
         android:title="@string/title_search" />
 

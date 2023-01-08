@@ -8,11 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.buttomnavigation.databinding.FragmentRandomBinding
+import com.example.buttomnavigation.databinding.FragmentNewBinding
 import com.example.tmdbapp.utils.isNetworkAvailable
 
 class TvShowFragment : Fragment() {
-    private var _binding: FragmentRandomBinding? = null
+    private var _binding: FragmentNewBinding? = null
     private val binding get() = _binding!!
 
     private val randomViewModel by viewModels<TvShowModel>()
@@ -22,7 +22,7 @@ class TvShowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRandomBinding.inflate(inflater, container, false)
+        _binding = FragmentNewBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val recyclerView = binding.recyclerView
 

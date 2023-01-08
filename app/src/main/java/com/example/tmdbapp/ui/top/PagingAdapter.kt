@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
 import com.example.buttomnavigation.databinding.ItemTopMovieBinding
 import com.example.tmdbapp.data.network.Movie
-import com.example.tmdbapp.ui.random.RandomMoviesAdapter
+import com.example.tmdbapp.ui.new20.NewMoviesAdapter
 import com.squareup.picasso.Picasso
 
 class PagingAdapter: PagingDataAdapter<Movie, PagingAdapter.Holder>(MovieDiffCallback()) {
@@ -23,7 +23,7 @@ class PagingAdapter: PagingDataAdapter<Movie, PagingAdapter.Holder>(MovieDiffCal
                 dateTextView.text = "("+movie.release_date.substring(0, 4) + ")\n\nРейтинг:\n" +
                         movie.vote_average.toString()
             } else dateTextView.text = "\n\nРейтинг:\n" + movie.vote_average.toString()
-            Picasso.get().load(RandomMoviesAdapter.BASE_IMAGE_URL + movie.poster_path)
+            Picasso.get().load(NewMoviesAdapter.BASE_IMAGE_URL + movie.poster_path)
                 .placeholder(R.drawable.ic_baseline_movies_120)
                 .error(R.drawable.ic_baseline_movies_120)
                 .into(holder.binding.imageView)

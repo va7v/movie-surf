@@ -27,7 +27,7 @@ interface TmdbApi {
 
     @GET("/3/tv/top_rated?language=ru-RU&page=1")
     suspend fun loadTopShow(
-        @Query("api_key") api_key: String): ApiMoviesList
+        @Query("api_key") api_key: String): ApiTVShowList
 
     @GET("/3/movie/top_rated?language=ru-RU") //~ popular discover/movie?sort_by=vote_average.desc
     suspend fun loadTopMovies(
@@ -98,8 +98,8 @@ object TmdbApiImpl {
                 .map { result ->
                     Movie(
                         result.id,
-                        result.release_date,
-                        result.title,
+                        result.first_air_date,
+                        result.name,
                         result.poster_path,
                         result.vote_average,
                         result.overview
@@ -132,8 +132,8 @@ object TmdbApiImpl {
             }
         //(ApiMoviesList::toMovie)
     }
-
-/*    suspend fun loadTopMovies() : List<Movie> {
+    /* без пажинации
+    suspend fun loadTopMovies() : List<Movie> {
         return withContext(Dispatchers.IO) {
             TmdbApiService.loadTopMovies(API_KEY)
                 .results

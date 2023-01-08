@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.random
+package com.example.tmdbapp.ui.new20
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +8,22 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.buttomnavigation.databinding.FragmentRandomBinding
+import com.example.buttomnavigation.databinding.FragmentNewBinding
 import com.example.tmdbapp.utils.isNetworkAvailable
 
-class RandomMovieFragment : Fragment() {
-    private var _binding: FragmentRandomBinding? = null
+class NewMovieFragment : Fragment() {
+    private var _binding: FragmentNewBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-    private val randomViewModel by viewModels<RandomMovieModel>()
-    private val itemAdapter = RandomMoviesAdapter()
+    private val randomViewModel by viewModels<NewMovieModel>()
+    private val itemAdapter = NewMoviesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRandomBinding.inflate(inflater, container, false)
+        _binding = FragmentNewBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val recyclerView = binding.recyclerView
 

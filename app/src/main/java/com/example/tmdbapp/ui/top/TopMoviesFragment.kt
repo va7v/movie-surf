@@ -36,7 +36,7 @@ class TopMoviesFragment : Fragment() {
         if (isNetworkAvailable(requireContext())) {
 
             lifecycleScope.launch {
-                //
+                // работа флоу с жизненным циклом
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                 topViewModel.moviesFlow.collectLatest {
                     itemAdapter.submitData(it)

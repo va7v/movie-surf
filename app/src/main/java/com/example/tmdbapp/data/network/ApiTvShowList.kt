@@ -2,46 +2,33 @@ package com.example.tmdbapp.data
 
 import com.example.tmdbapp.data.network.Movie
 
-data class ApiMoviesList(
+data class ApiTVShowList(
     val page: Int,
-    val results: List<Result>,
+    val results: List<ResultTS>,
     val total_pages: Int,
     val total_results: Int
 )
 
-data class Result(
+data class ResultTS(
+
     val id: String?,
+
     val overview: String?,
+
     val poster_path: String?,
-    val release_date: String?,
-    val title: String?,
+    val first_air_date: String?,
+    val name: String?,
 
     val vote_average: Double?,
-
 ) {
     fun toMovie(): Movie {
         return Movie(
             id = id,
-            title = title,
-            release_date = release_date,
+            title = name,
+            release_date = first_air_date,
             poster_path = poster_path,
             vote_average = vote_average,
             overview = overview
         )
     }
-
 }
-/*
-    val adult: Boolean?,
-    val backdrop_path: String?,
-    val genre_ids: List<Int>,
-
-    val original_language: String,
-    val original_title: String,
-
-    val popularity: Double,
-
-    val video: Boolean,
-
-    val vote_count: Int
- */
