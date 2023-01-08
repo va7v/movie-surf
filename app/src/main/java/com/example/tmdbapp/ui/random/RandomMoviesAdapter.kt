@@ -6,7 +6,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
-import com.example.buttomnavigation.databinding.LayoutItemBinding
+import com.example.buttomnavigation.databinding.ItemNewMovieBinding
 import com.example.tmdbapp.data.network.Movie
 import com.squareup.picasso.Picasso
 
@@ -14,11 +14,11 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
 
     private val items = mutableListOf<Movie>()
 
-    inner class ViewHolder(val binding: LayoutItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: ItemNewMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         return ViewHolder(
-            LayoutItemBinding.inflate(
+            ItemNewMovieBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
             )
@@ -31,6 +31,8 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
+            .placeholder(R.drawable.ic_baseline_movies_120)
+            .error(R.drawable.ic_baseline_movies_120)
             .into(holder.binding.imageView)
         holder.binding.titleTextView.text = items[position].title
 

@@ -17,8 +17,6 @@ import kotlinx.coroutines.launch
 
 class TopMoviesFragment : Fragment() {
     private var _binding: FragmentTopBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     private val topViewModel by viewModels<TopMoviesModel>()
@@ -33,8 +31,6 @@ class TopMoviesFragment : Fragment() {
         val recyclerView = binding.recyclerView
 
         recyclerView.adapter = itemAdapter
-        // app:layoutManager in layout vs recyclerView.layoutManager = LinearLayoutManager(this)
-
         if (isNetworkAvailable(requireContext())) {
 
             lifecycleScope.launch {
@@ -42,12 +38,10 @@ class TopMoviesFragment : Fragment() {
                     itemAdapter.submitData(it)
                 }
             }
-//            topViewModel.moviesFlow.collect(viewLifecycleOwner, Observer {
-//                //addItems(it)
+
+//            topViewModel.status.observe(viewLifecycleOwner, Observer {
+//                Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
 //            })
-            topViewModel.status.observe(viewLifecycleOwner, Observer {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-            })
         } else
             Toast.makeText(requireContext(), "Network is off!", Toast.LENGTH_LONG).show()
         return root

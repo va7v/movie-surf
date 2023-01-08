@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.Flow
 @ExperimentalCoroutinesApi
 @FlowPreview
 class TopMoviesModel : ViewModel() {
-    private val _items = MutableLiveData<List<Movie>>()
-    val items: LiveData<List<Movie>> get() = _items
+//    private val _items = MutableLiveData<List<Movie>>()
+//    val items: LiveData<List<Movie>> get() = _items
 
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String> = _status
+//    private val _status = MutableLiveData<String>()
+//    val status: LiveData<String> = _status
 
     val moviesFlow: Flow<PagingData<Movie>>
 

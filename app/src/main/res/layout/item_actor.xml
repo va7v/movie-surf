@@ -9,26 +9,27 @@
     android:layout_marginTop="2dp">
     <ImageView
         android:id="@+id/image_view_cast"
-        android:contentDescription="Actors photo"
-        android:layout_width="300px"
-        android:layout_height="450px"
+        android:layout_width="60dp"
+        android:layout_height="90dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_launcher_background" />
     <TextView
         android:id="@+id/tv_name"
-        android:text="name"
-        android:layout_width="300px"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/image_view_cast"
+        app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
         android:id="@+id/character"
-        android:text="character"
-        android:layout_width="300px"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

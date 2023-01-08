@@ -30,7 +30,24 @@
         android:id="@+id/navigation_search"
         android:name="com.example.tmdbapp.ui.search.SearchMovieFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_saved" />
+        tools:layout="@layout/fragment_search">
+
+    <action android:id="@+id/action_navigation_search_to_navigation_result"
+        app:destination="@id/navigation_result"
+        app:popUpTo="@+id/navigation_search"/>
+        />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_result"
+        android:name="com.example.tmdbapp.ui.search.ResultMovieFragment"
+        android:label="Результат поиска"
+        tools:layout="@layout/fragment_random" >
+        <argument
+            android:name="query"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_details"

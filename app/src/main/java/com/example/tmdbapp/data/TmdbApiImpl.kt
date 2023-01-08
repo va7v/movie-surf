@@ -21,9 +21,17 @@ const val API_KEY = BuildConfig.API_KEY
 const val BASE_URL = BuildConfig.BASE_URL
 
 interface TmdbApi {
-    @GET("/3/discover/movie?primary_release_year=2022") //with_genres=18&
+    //@GET("/3/movie/upcoming?language=en-US&page=1")
+    @GET("/3/search/movie?language=en-US&query=Bob&page=1&year=2000")
+//    @GET("/3/discover/movie?primary_release_year=2022") //with_genres=18&
     // /3/search/movie?&language=en-US&query=movie&page=1&primary_release_year=2022
     suspend fun loadMovies(@Query("api_key") api_key: String): ApiMoviesList
+
+    @GET("/3/search/movie?language=en-US")
+    suspend fun loadSearchMovies(
+        @Query("api_key") api_key: String,
+        @Query("query") squery: String
+        ): ApiMoviesList
 
     @GET("/3/movie/top_rated") //~ popular discover/movie?sort_by=vote_average.desc
     suspend fun loadTopMovies(
@@ -115,6 +123,21 @@ object TmdbApiImpl {
     suspend fun loadMovies() : List<Movie> {
         return withContext(Dispatchers.IO) {
             TmdbApiService.loadMovies(API_KEY)
+                .results
+                .map { result ->
+                    Movie(
+                        result.id,
+                        result.release_date,
+                        result.title,
+                        result.poster_path,
+                        result.vote_average,
+                        result.overview
+                    )
+                }
+        }
+    }    suspend fun loadSearchMovies(squery : String) : List<Movie> {
+        return withContext(Dispatchers.IO) {
+            TmdbApiService.loadSearchMovies(API_KEY, squery)
                 .results
                 .map { result ->
                     Movie(

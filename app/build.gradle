@@ -9,11 +9,11 @@ def getApiKey() {
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
     return properties.getProperty("api.key")
 }
-//def getBaseUrl() {
-//    Properties properties = new Properties()
-//    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-//    return properties.getProperty("base.url")
-//}
+def getBaseUrl() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    return properties.getProperty("base.url")
+}
 android {
     compileSdkVersion 31
     buildToolsVersion '30.0.2'
@@ -21,14 +21,12 @@ android {
     defaultConfig {
         applicationId "r_studyproject.tmdbapp"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_KEY", getApiKey()
-        buildConfigField "String", "BASE_URL", "https://api.themoviedb.org" // "\"" getBaseUrl()
-
+        buildConfigField "String", "BASE_URL", getBaseUrl() // "\""
     }
 
     buildTypes {

@@ -1,5 +1,4 @@
-/*
-package com.example.tmdbapp.ui.top
+package com.example.tmdbapp.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,19 +6,19 @@ import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buttomnavigation.R
-import com.example.buttomnavigation.databinding.LayoutItemBinding
+import com.example.buttomnavigation.databinding.ItemNewMovieBinding
 import com.example.tmdbapp.data.network.Movie
 import com.squareup.picasso.Picasso
 
-class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
+class ResultMoviesAdapter : RecyclerView.Adapter<ResultMoviesAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Movie>()
 
-    inner class ViewHolder(val binding: LayoutItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: ItemNewMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         return ViewHolder(
-            LayoutItemBinding.inflate(
+            ItemNewMovieBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
             )
@@ -32,24 +31,22 @@ class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Picasso.get().load(BASE_IMAGE_URL + items[position].poster_path)
+            .placeholder(R.drawable.ic_baseline_movies_120)
+            .error(R.drawable.ic_baseline_movies_120)
             .into(holder.binding.imageView)
-        holder.binding.titleTextView.text = items[position].title + "\n\nРейтинг: " +
-                (items[position].vote_average).toString()
-        val year: String?
-        if (items[position].release_date.isNullOrEmpty()) {
-            holder.binding.dateTextView.text = items[position].release_date?.substring(0, 4)
-            year = items[position].release_date
-        } else { year = "" }
+        holder.binding.titleTextView.text = items[position].title
+
+        holder.binding.dateTextView.text = "(${(items[position].release_date)})"+
+                "\n\nРейтинг:\n" + (items[position].vote_average)
+
         val bundle = bundleOf("movie_id" to items[position].id,
-            "title" to items[position].title,
-            "rate" to items[position].vote_average.toString(),
-            "poster_path" to items[position].poster_path,
-            "date" to year,
-            "overview" to items[position].overview)
+        "title" to items[position].title, "rate" to items[position].vote_average.toString(),
+        "poster_path" to items[position].poster_path, "date" to items[position].release_date,
+        "overview" to items[position].overview)
 
         holder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
-                R.id.action_navigation_top_to_navigation_details, bundle)
+                R.id.action_navigation_random_to_navigation_details, bundle)
         )
     }
 
@@ -61,4 +58,4 @@ class TopMoviesAdapter : RecyclerView.Adapter<TopMoviesAdapter.ViewHolder>() {
     companion object {
         const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"
     }
-}*/
+}

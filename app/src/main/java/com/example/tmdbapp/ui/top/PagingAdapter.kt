@@ -5,48 +5,44 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.buttomnavigation.databinding.ItemUserBinding
+import com.example.buttomnavigation.R
+import com.example.buttomnavigation.databinding.ItemTopMovieBinding
 import com.example.tmdbapp.data.network.Movie
+import com.example.tmdbapp.ui.random.RandomMoviesAdapter
+import com.squareup.picasso.Picasso
 
-class PagingAdapter: PagingDataAdapter<Movie, PagingAdapter.Holder>(UsersDiffCallback()) {
+class PagingAdapter: PagingDataAdapter<Movie, PagingAdapter.Holder>(MovieDiffCallback()) {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val movie = getItem(position) ?: return
         with (holder.binding) {
-            userNameTextView.text = movie.title
-            userCompanyTextView.text = movie.release_date
-            //loadUserPhoto(photoImageView, user.imageUrl)
+            titleTextView.text = movie.title
+            if (!movie.release_date.isNullOrEmpty()) {
+                dateTextView.text = "("+movie.release_date.substring(0, 4) + ")\n\nРейтинг:\n" +
+                        movie.vote_average.toString()
+            } else dateTextView.text = "\n\nРейтинг:\n" + movie.vote_average.toString()
+            Picasso.get().load(RandomMoviesAdapter.BASE_IMAGE_URL + movie.poster_path)
+                .placeholder(R.drawable.ic_baseline_movies_120)
+                .error(R.drawable.ic_baseline_movies_120)
+                .into(holder.binding.imageView)
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemUserBinding.inflate(inflater, parent, false)
+        val binding = ItemTopMovieBinding.inflate(inflater, parent, false)
         return Holder(binding)
     }
 
-/*    private fun loadUserPhoto(imageView: ImageView, url: String) {
-        val context = imageView.context
-        if (url.isNotBlank()) {
-
-                .placeholder(R.drawable.ic_user_avatar)
-                .error(R.drawable.ic_user_avatar)
-                .into(imageView)
-        } else {
-
-                .into(imageView)
-        }
-    }*/
-
     class Holder(
-        val binding: ItemUserBinding
+        val binding: ItemTopMovieBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
 }
 
-// ---
 
-class UsersDiffCallback : DiffUtil.ItemCallback<Movie>() {
+class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.id == newItem.id
     }

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">КиноСёрф</string>
-    <string name="title_home">Случайные</string>
-    <string name="title_top">Лучшие по рейтингу</string>
+    <string name="title_home">20 новых</string>
+    <string name="title_top">Лучшие</string>
     <string name="title_search">Поиск</string>
     <string name="details">Описание фильма</string>
     <string name="cast">Снимались:</string>
     <string name="movie_poster">Постер</string>
+    <string name="search_word">Введите слово в названии:</string>
+    <string name="search">Искать</string>
 </resources>

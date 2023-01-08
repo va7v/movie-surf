@@ -43,7 +43,7 @@ class MovieDetailsFragment(): Fragment() {
                     "\n\nДата выхода: " + MovieDate +
                     "\nЖанр: " + gentre +
                     "\nРейтинг: " + MovieRate
-            textViewDetails2.text = "Сюжет:  " + MovieOverview + "\n\nСнимались:"
+            textViewDetails2.text = "Сюжет:  " + MovieOverview
         })
         movieDetailsModel.getMovieActors(arguments?.getString("movie_id"))
         movieDetailsModel.items.observe(getViewLifecycleOwner(), Observer {
@@ -57,9 +57,9 @@ class MovieDetailsFragment(): Fragment() {
             for (i in 0 until it.size) {
                 val itemBinding = ItemActorBinding.inflate(LayoutInflater.from(requireContext()))
                 val tvName = itemBinding.tvName
-                tvName.text = it[i].name
+                tvName.text = it[i].name + ":"
                 val character = itemBinding.character
-                character.text = "Роль: " + it[i].character
+                character.text = it[i].character
                 val imageViewCast = itemBinding.imageViewCast
                 Picasso.get().load(BASE_IMAGE_URL + it[i].profile_path)
                     .placeholder(R.drawable.placeholder_150)
@@ -81,6 +81,6 @@ class MovieDetailsFragment(): Fragment() {
     }
 
     companion object {
-        const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"
+        const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w200"
     }
 }
