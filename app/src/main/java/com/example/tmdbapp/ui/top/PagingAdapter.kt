@@ -2,6 +2,8 @@ package com.example.tmdbapp.ui.top
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +29,18 @@ class PagingAdapter: PagingDataAdapter<Movie, PagingAdapter.Holder>(MovieDiffCal
                 .into(holder.binding.imageView)
 
         }
+        val bundle = bundleOf(
+            "movie_id" to movie.id,
+            "title" to movie.title,
+            "rate" to movie.vote_average.toString(),
+            "poster_path" to movie.poster_path,
+            "date" to movie.release_date,
+            "overview" to movie.overview)
+
+        holder.itemView.setOnClickListener(
+            Navigation.createNavigateOnClickListener(
+                R.id.action_navigation_top_to_navigation_details, bundle)
+        )
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

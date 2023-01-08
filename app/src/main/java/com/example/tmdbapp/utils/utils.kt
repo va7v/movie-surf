@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.tmdbapp.utils
 
 import android.content.Context

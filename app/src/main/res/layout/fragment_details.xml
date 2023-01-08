@@ -43,13 +43,24 @@
         app:layout_constraintTop_toBottomOf="@+id/image_view"
         />
 
+    <TextView
+        android:id="@+id/text_details3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp"
+        android:textSize="15sp"
+        android:text="@string/casts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_details2"
+        />
+
     <HorizontalScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="0dp"
+        android:layout_margin="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_details2"
+        app:layout_constraintTop_toBottomOf="@+id/text_details3"
         >
         <LinearLayout
             android:id="@+id/lin_layout"

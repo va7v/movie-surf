@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.search
+package com.example.tmdbapp.ui.tvshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.example.buttomnavigation.databinding.ItemNewMovieBinding
 import com.example.tmdbapp.data.network.Movie
 import com.squareup.picasso.Picasso
 
-class ResultMoviesAdapter : RecyclerView.Adapter<ResultMoviesAdapter.ViewHolder>() {
+class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Movie>()
 

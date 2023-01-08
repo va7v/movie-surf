@@ -1,4 +1,4 @@
-package com.example.tmdbapp.ui.search
+package com.example.tmdbapp.ui.tvshow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,12 @@ import androidx.lifecycle.Observer
 import com.example.buttomnavigation.databinding.FragmentRandomBinding
 import com.example.tmdbapp.utils.isNetworkAvailable
 
-class ResultMovieFragment : Fragment() {
+class TvShowFragment : Fragment() {
     private var _binding: FragmentRandomBinding? = null
     private val binding get() = _binding!!
 
-    private val randomViewModel by viewModels<ResultMovieModel>()
-    private val itemAdapter = ResultMoviesAdapter()
+    private val randomViewModel by viewModels<TvShowModel>()
+    private val itemAdapter = TvShowAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

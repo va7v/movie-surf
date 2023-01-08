@@ -39,10 +39,13 @@ class RandomMoviesAdapter : RecyclerView.Adapter<RandomMoviesAdapter.ViewHolder>
         holder.binding.dateTextView.text = "(${(items[position].release_date)})"+
                 "\n\nРейтинг:\n" + (items[position].vote_average)
 
-        val bundle = bundleOf("movie_id" to items[position].id,
-        "title" to items[position].title, "rate" to items[position].vote_average.toString(),
-        "poster_path" to items[position].poster_path, "date" to items[position].release_date,
-        "overview" to items[position].overview)
+        val bundle = bundleOf(
+            "movie_id" to items[position].id,
+            "title" to items[position].title,
+            "rate" to items[position].vote_average.toString(),
+            "poster_path" to items[position].poster_path,
+            "date" to items[position].release_date,
+            "overview" to items[position].overview)
 
         holder.itemView.setOnClickListener(
             Navigation.createNavigateOnClickListener(
