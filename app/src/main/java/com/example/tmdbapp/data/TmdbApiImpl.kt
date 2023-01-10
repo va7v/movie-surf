@@ -25,13 +25,9 @@ interface TmdbApi {
     @GET("/3/movie/upcoming?language=ru-RU&page=1")
     suspend fun loadMovies(@Query("api_key") api_key: String): ApiMoviesList
 
-    @GET("/3/movie/{id}")
-    suspend fun getDetails(@Path("id") id : String?, @Query("api_key") api_key: String)
-            : ApiMovieDetails
-    
-    @GET("/3/movie/{id}/credits")
-    suspend fun getActors(@Path("id") id : String?, @Query("api_key") api_key: String)
-            : ApiMovieCredits
+    @GET("/3/tv/top_rated?language=ru-RU&page=1")
+    suspend fun loadTopShow(
+        @Query("api_key") api_key: String): ApiTVShowList
 
     @GET("/3/movie/top_rated?language=ru-RU") //~ popular discover/movie?sort_by=vote_average.desc
     suspend fun loadTopMovies(
@@ -39,22 +35,20 @@ interface TmdbApi {
         @Query("page") page: Int = 1
     ): ApiMoviesList
 
-    @GET("/3/tv/top_rated?language=ru-RU&page=1")
-    suspend fun loadTopShow(
-        @Query("api_key") api_key: String): ApiTVShowList
-
+    @GET("/3/movie/{id}")
+    suspend fun getDetails(@Path("id") id : String?, @Query("api_key") api_key: String)
+            : ApiMovieDetails
+    @GET("/3/movie/{id}/credits")
+    suspend fun getActors(@Path("id") id : String?, @Query("api_key") api_key: String)
+            : ApiMovieCredits
 }
 object TmdbApiImpl {
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    
     private val TmdbApiService: TmdbApi by lazy { retrofit.create(TmdbApi::class.java) }
-
-//    @Inject
-//    lateinit var webApi: WebApi
-
+    
     suspend fun getActors(id : String?, api_key: String) : List<Actor> {
         return withContext(Dispatchers.IO) {
             TmdbApiService.getActors(id, api_key)

@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
-//    id 'kotlin-kapt'
     //https://habr.com/ru/post/416025/?    id 'androidx.navigation.safeargs'
 }
 def getApiKey() {
@@ -22,12 +21,12 @@ android {
     defaultConfig {
         applicationId "r_studyproject.tmdbapp"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_KEY", getApiKey()
-        buildConfigField "String", "BASE_URL", getBaseUrl() 
+        buildConfigField "String", "BASE_URL", getBaseUrl() // "\""
     }
 
     buildTypes {
@@ -68,16 +67,16 @@ dependencies {
 
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
-    implementation "androidx.activity:activity-ktx:1.4.0" //140
+    implementation "androidx.activity:activity-ktx:1.4.0"
 
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
 
-    //testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
 
@@ -86,8 +85,6 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
     // alternatively - without Android dependencies for tests
     //testImplementation("androidx.paging:paging-common:$paging_version")
-    //implementation "androidx.swiperefreshlayot:swiperefreshlayot:1.1.0"
 
-//    implementation 'com.google.dagger:dagger:2.x'
-//    kapt 'com.google.dagger:dagger-compiler:2.x'
+    //implementation "androidx.swiperefreshlayot:swiperefreshlayot:1.1.0"
 }
